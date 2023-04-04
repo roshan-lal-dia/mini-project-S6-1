@@ -7,7 +7,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-    <script src="register.js"></script>
+    <style>
+        input:required:invalid {
+  border-color: red;
+}
+
+input:required:invalid + span:before {
+  content: "This field is required";
+  color: red;
+  font-size: 12px;
+}
+
+input:required:valid {
+  border-color: green;
+}
+
+input:required:valid + span:before {
+  content: "\2714";
+  color: green;
+  font-size: 12px;
+}
+.input-info {
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+  color: #999;
+}
+
+        span{color:red;}
+        /* style for signup*/
+        button {
+ align-items: center;
+ background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+ border: 0;
+ border-radius: 8px;
+ box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+ box-sizing: border-box;
+ color: #FFFFFF;
+ display: flex;
+ font-family: Phantomsans, sans-serif;
+ font-size: 18px;
+ justify-content: center;
+ line-height: 1em;
+ max-width: 100%;
+ min-width: 140px;
+ padding: 3px;
+ text-decoration: none;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ white-space: nowrap;
+ cursor: pointer;
+ transition: all .3s;
+}
+
+button:active,
+button:hover {
+ outline: 0;
+}
+
+button span {
+ background-color: rgb(5, 6, 45);
+ padding: 16px 24px;
+ border-radius: 6px;
+ width: 100%;
+ height: 100%;
+ transition: 300ms;
+}
+
+button:hover span {
+ background: none;
+}
+
+button:active {
+ transform: scale(0.9);
+}
+/* style for login*/
+#log {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#log a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#log a:hover {
+  text-decoration: underline;
+}
+/*1280px*/
+@media only screen and (min-width: 1280px) {
+  body {
+    font-size: 18px;
+    line-height: 1.5;
+    background-color: blue;
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: white;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: white;
+    border: 2px solid blue;
+    color: blue;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .button:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/*desktop view*/
+    @media screen and (min-width: 1024px) {
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .input-control {
+    flex: 0 0 calc(50% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    margin-top: 30px;
+  }
+}
+/*mobile view*/
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .input-control {
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    margin-top: 20px;
+  }
+}
+
+</style> 
 </head>
 <body>
 
@@ -29,33 +199,40 @@
     </div>
 
     <div class="input-control">
-    <label for="">User name </label>
-    <input type="text" name="username" placeholder="User Name"  required>
+    <label for="">User name<span>*</span></label>
+    <input type="text" name="username" id="name" placeholder="User Name">
 
 
 </div>
 <div class="input-control">
     <label for="">Email</label>
-    <input type="email" name="email" placeholder="Email" required>
+
+    <input type="email" name="email" placeholder="Email" >
+
 
 
 </div>
 <div class="input-control">
-    <label for="">Password</label>
-    <input type="password" name="password" placeholder="Password"required>
-</div>
+    <label for="">Password<span>*</span></label>
+    <input type="password" name="password" id="password "placeholder="Password" minlength="8" maxlength="50">
+    <span class="input-info">Minimum 8 characters</span>
+  </div>
 <div class="input-control">
-    <label for="" required>Password Again</label>
-    <input type="password" name="password2" placeholder="Confirm the password"required>
+
+  <label for="">Password Again<span>*</span></label>
+<input type="password" name="password2" id="password2" placeholder="Confirm Password" minlength="8">
+  
+
+</div>
 
 </div>
 </div>
-<div class="btn">
-    <input class="button" type="submit" value="Signup">
-   
-
-</div>
-<p id="log">Already have an account ? <a href="/login"><b>Login</b></a></p>
+<center>
+<button>
+  <span class="text">SIGN UP</span>
+</button>
+</center>
+<p id="log">Already have an account? <a href="/login"><b>SIGN IN</b></a></p>
     </form>
    <br>
     <div id="error">
